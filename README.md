@@ -62,3 +62,26 @@ index(0~9)별로 합해준다. 가중치 합이 가장 많은 index가 그 test 
 
 - O_time : test data를 KNN알고리즘을 통해 classification 하는 시간
 - H_time : hand-crafted 한 test data를 KNN알고리즘을 통해 classification 하는 시간
+
+
+### 학습 과정에 대한 설명
+
+test data는 N개 train data는 60000개의 image를 모두 handcraft할 때까지 밑에 있는 그림의 과정을 반복
+
+![image](https://user-images.githubusercontent.com/52345499/163820456-34e94ba0-6268-44a8-abe9-f11aa9ce827e.png)
+
+
+
+### 결과에 대한 분석
+
+소스코드를 실행하면 출력되는 결과들을 표로 도식화했다.
+
+![image](https://user-images.githubusercontent.com/52345499/163820692-b4ff0a5f-a4b7-4139-a401-86d209d60a87.png)
+
+
+time 표를 보면 시간은 hand crafted한 test data가 원래 test data보다 시간이 더 적게 걸리고 N개를 더 크게 할수록 그 시간 차이가 더 커진다. 추가로, K가 커질수록 시간도 줄어드는 경향이 있다는 것을 확인할 수 있다.
+ accuary 표를 참고하면, 정확도는 hand crafted한 test data가 원래 test data보다 더 1\~3퍼센트 떨어지거나 같고, N개를 더 크게 해도 똑같이 1~3퍼센트 차이가 난다. 그리고, 모두 90%이상의 정확도를 갖고 있다. 
+
+ 따라서, test data가 클수록, 원래 test data를 처리하는데 걸리는 시간과 hand crafted test data를 처리하는 시간의 차이(hand crafted data가 더 작게)가 더 크게 나는 반면에, 정확도는 차이가 벌어지지는 않고, 일정한 퍼센트(간격)만큼 떨어진다고 볼 수 있다.  
+
+ 그러므로, classification 할 때에는 data 모두를 쓰는 것 보다는 data의 특징을 잘 파악해서 data를 hand craft하면, 처리하는 data의 개수도 줄일 수 있고 훨씬 더 효율적이고 빠르게 분류할 수 있다는 것을 알 수 있다.   
